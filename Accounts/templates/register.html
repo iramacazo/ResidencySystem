@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Allows static files to be loaded from the apps static files -->
+    {% load static %}
+    <meta charset="UTF-8">
+
+    <!-- Imports JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+
+    <title>Register</title>
+</head>
+<body>
+    <a href="../.." id="backbutton"> < Back </a>
+    <span class="col-md-4"></span>
+        <div class="col-md-4">
+            <p id="registerLabel">Register</p>
+            <div class="modal-body container-fluid">
+                <form method="POST" id="loginform">
+                    {% csrf_token %}
+                    {% for field in registration %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+                            {% if field.help_text %}
+                                {% if field.help_text|length > 70 %}
+                                    {% else %}
+                                    <br>
+                                    <em class="small">{{ field.help_text }}</em>
+                                {% endif %}
+                                {% for error in field.errors %}
+                                    <span class="help-inline">{{ field.errors }}</span>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Sign up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+</html>

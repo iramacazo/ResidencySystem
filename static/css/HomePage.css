@@ -1,0 +1,63 @@
+@font-face
+{
+    font-family: Roboto-thin;
+    src: url(fonts/Roboto-thin.ttf);
+}
+
+@font-face
+{
+    font-family: Roboto-light;
+    src: url(fonts/Roboto-light.ttf);
+}
+
+.jumbotron
+{
+    background-image: url("../images/cometBanner.jpg");
+    background-size: cover;
+    padding-right: 5%;
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+.jumbotron h1{
+    color: #50C1FC;
+    font-family: Roboto-light, sans-serif;
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+}
+
+body{background-color: #0B0E13}
+
+#leftside
+{
+    border-right-style: solid;
+    border-right-width: 3px;
+    border-right-color: #2C6A8A;
+    padding-top: 13%;
+    padding-bottom: 13%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#cometLabel
+{
+    color: #2C6A8A;
+    font-size: 4em;
+    padding-right: 40%;
+    padding-left: 10%;
+    padding-top: 10%;
+    font-family: Roboto-thin, sans-serif;
+}
+
+.btn
+{
+    font-family: Roboto-light, sans-serif;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
