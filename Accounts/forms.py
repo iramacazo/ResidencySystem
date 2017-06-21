@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import authenticate
 
 
 class BaseModelForm(forms.ModelForm):
@@ -31,6 +32,14 @@ class SignUpForm(UserCreationForm, BaseModelForm):
 
 
 class LogInForm(AuthenticationForm, BaseModelForm):
+
     class Meta:
         model = User
         fields = ('username', 'password')
+
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+        user = authenticate(username=username, password=password)
+        if not user or not user.is_active:
+            raise forms.ValidationError("Sorry, that login was invalid. Please try again.")

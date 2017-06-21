@@ -35,7 +35,6 @@
                             {% if field.help_text %}
                                 {% if field.help_text|length > 70 %}
                                     {% else %}
-                                    <br>
                                     <em class="small">{{ field.help_text }}</em>
                                 {% endif %}
                                 {% for error in field.errors %}

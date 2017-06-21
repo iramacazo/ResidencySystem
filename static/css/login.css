@@ -1,0 +1,61 @@
+@font-face
+{
+    font-family: Roboto-thin;
+    src: url(fonts/Roboto-thin.ttf);
+}
+
+@font-face
+{
+    font-family: Roboto-light;
+    src: url(fonts/Roboto-light.ttf);
+}
+
+body{background-color: #0B0E13}
+
+#backbutton
+{
+    position: fixed;
+    font-size: 3em;
+    font-family: Roboto-thin, sans-serif;
+    text-decoration: none;
+    color: #2C6A8A;
+    left: 2%;
+    top: 2%;
+}
+
+#registerLabel
+{
+    padding-top: 1%;
+    color: #2C6A8A;
+    font-size: 4em;
+    text-align: center;
+    font-family: Roboto-light, sans-serif;
+}
+
+#login-form{color: #2C6A8A;}
+
+.btn
+{
+    padding-right: 7%;
+    padding-left: 7%;
+    border-radius: 45px;
+    font-family: Roboto-light, sans-serif;
+    font-size: 1.1em;
+}
+
+label
+{
+    color: #2C6A8A;
+    font-family: Roboto-light, sans-serif;
+}
+
+.small
+{
+    color: #1d4b64;
+    padding-left: 3%;
+    margin-top: 2%;
+}
+
+.errorlist > li {font-family: Roboto-light, sans-serif; color: crimson;}
+
+.form-group{margin-bottom: 25px}

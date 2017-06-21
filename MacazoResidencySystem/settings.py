@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'ResidencySystem.middleware.AuthRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'MacazoResidencySystem.urls'
@@ -130,3 +131,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '',
 ]
+
+LOGIN_EXEMPT_URLS = (
+    r'^$',
+    r'^accounts/login',
+    r'^accounts/logout',
+    r'^accounts/register',
+    r'^admin/',
+)
