@@ -49,7 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'ResidencySystem.middleware.AuthRequiredMiddleware',
 ]
 
 ROOT_URLCONF = 'MacazoResidencySystem.urls'
@@ -139,3 +138,5 @@ LOGIN_EXEMPT_URLS = (
     r'^accounts/register',
     r'^admin/',
 )
+
+LOGIN_REDIRECT_URL = '/'

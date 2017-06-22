@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Allows static files to be loaded from the apps static files -->
     {% load static %}
     <meta charset="UTF-8">
     <link rel='icon' href='{% static 'images/CometLogoSquare.png' %}'>
@@ -16,20 +15,21 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/HomePage.css' %}">
-    <title>Residency System</title>
+    <link rel="stylesheet" href="{% static 'css/Mainpage.css' %}">
+
+    <title>Mainpage</title>
 </head>
 <body>
-    <div class="jumbotron">
-        <h1>Residency System</h1>
-    </div>
-    <div class="col-md-6 text-center" id="leftside">
-        <a type="button" class="btn btn-primary btn-block" id="loginButton" href="accounts/login">Login</a>
-        <br>
-        <a type="button" class="btn btn-info btn-block" id="registerButton" href="accounts/register">Register</a>
-    </div>
-    <div class="col-md-6" id="rightside">
-        <p id="cometLabel">Center for Complexity & Emerging Technologies</p>
-    </div>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../mainpage">
+                    <img style="height: 350%" src="{% static 'images/CometLogo.png' %}">
+                </a>
+            </div>
+        </div>
+    </nav>
+    Hello,
+    <a href="../accounts/logout/">{{ request.user.id }} logout</a>
 </body>
 </html>
