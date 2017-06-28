@@ -140,3 +140,5 @@ LOGIN_EXEMPT_URLS = (
 )
 
 LOGIN_REDIRECT_URL = '/'
+
+AUTH_PROFILE_MODULE = 'Accounts.UserProfile'

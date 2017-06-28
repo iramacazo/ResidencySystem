@@ -1,0 +1,40 @@
+@font-face
+{
+    font-family: Roboto-thin;
+    src: url(fonts/Roboto-thin.ttf);
+}
+
+@font-face
+{
+    font-family: Roboto-light;
+    src: url(fonts/Roboto-light.ttf);
+}
+
+body
+{
+    margin-top: 100px;
+    background-color: #0B0E13;
+}
+
+nav.navbar-fixed-top
+{
+    background-color: #1c2632;
+    height: 100px;
+}
+
+.navbar-nav > li > a
+{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #9ee6f8;
+    font-family: Roboto-light, sans-serif;
+    font-size: 2em;
+}
+
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus
+{
+    background-color: #19222d;
+    color: #6ea3b4;
+}

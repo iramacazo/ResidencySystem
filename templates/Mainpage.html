@@ -27,9 +27,17 @@
                     <img style="height: 350%" src="{% static 'images/CometLogo.png' %}">
                 </a>
             </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#">Teams</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">Teams</a></li>
+            </ul>
         </div>
     </nav>
-    Hello,
-    <a href="../accounts/logout/">{{ request.user.id }} logout</a>
+    <div class="everything">
+        Hello,
+    <a href="../accounts/logout/">{{ request.user.username }} logout</a>
+    </div>
 </body>
 </html>

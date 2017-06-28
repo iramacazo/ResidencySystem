@@ -37,7 +37,7 @@
                                     <em class="small">{{ field2.help_text }}</em>
                                 {% endif %}
                                 {% for error in field2.errors %}
-                                    <span class="help-inline">{{ field2.errors }}</span>
+                                    <span class="help-inline">{{ error }}</span>
                                 {% endfor %}
                             {% endif %}
                         </div>
