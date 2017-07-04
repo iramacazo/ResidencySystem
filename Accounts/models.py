@@ -5,5 +5,8 @@ from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
-    avatar = models.ImageField(upload_to='/images/avatars/')
-    user = models.ForeignKey(User, unique='True')
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        primary_key=True,
+    )

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ResidencySystem.apps.ResidencysystemConfig',
     'TeamManagement.apps.TeammanagementConfig',
+    'Accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
