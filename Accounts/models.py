@@ -10,3 +10,6 @@ class UserProfile(models.Model):
         on_delete=models.CASCADE,
         primary_key=True,
     )
+
+    def __str__(self):
+        return 'User: {}'.format(self.user.username)

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from Accounts.forms import SignUpForm, LogInForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
+from Accounts.models import UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -20,6 +21,8 @@ def register(request):
                 raw_password = registration.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
                 login(request, user)
+                userprofile = UserProfile(request.user.id)
+                userprofile.save()
                 return redirect('mainpage')
         else:
             registration = SignUpForm()
