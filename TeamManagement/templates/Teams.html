@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel='icon' href='{% static 'images/CometLogoSquare.png' %}'>
+    <!-- Imports JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/teams.css' %}">
+
+    <script src="{% static 'js/Teams.js' %}"></script>
+
+    <title>Mainpage</title>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../mainpage">
+                    <img style="height: 200%" src="{% static 'images/CometLogo.png' %}">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="../teams">Teams</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Schedule</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">{{ request.user.username }}</a></li>
+                <li><a href="../accounts/logout/">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <span class="col-md-1"></span>
+        <div class="col-md-10">
+            {% if user.is_superuser %}
+                {% if teams.count == 0 %}
+                    <p id="title">There are no teams!</p>
+                    <p id="titledetail">Try adding a team using the button below</p>
+                {% else %}
+                    <p id="title">Teams</p>
+                    <div class="panel-group" id="accordion">
+                        {% for team in teams %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#data{{ team.group.id }}">
+                                    {{ team.group.name }}
+                                </div>
+                                <div id="data{{ team.group.id }}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="container">
+                                            <div class="col-md-6">
+                                                <p id="type">{{ team.teamtype }} Team</p>
+                                                <p id="description">{{ team.teamdescription }}</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% if team.countusers == 0 %}
+                                                    <p>There are no members</p>
+                                                {% else %}
+                                                    <p id="users">Members:</p>
+                                                        {% for user in team.allmembers %}
+                                                            <p style="padding-left: 15px">{{ user.username }}</p>
+                                                        {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <button type="button" id="addTeam" data-target="#addTeamModal" data-toggle="modal">+ Add a Team</button>
+
+                <div id="addTeamModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add a Team</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="teamNameInput">Team Name:</label>
+                                    <input type="text" class="form-control" id="teamNameInput"
+                                           placeholder="Enter team name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="teamDescriptionInput">Description:</label>
+                                    <textarea class="form-control" style="resize: none" rows="3"
+                                              id="teamDescriptionInput" placeholder="Description..."></textarea>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="teamType" value="Research">Research</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="teamType" value="Development">Development</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" id="submitTeam">Add Team</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
