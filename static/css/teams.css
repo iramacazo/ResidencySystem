@@ -1,0 +1,111 @@
+@font-face
+{
+    font-family: Roboto-thin;
+    src: url(fonts/Roboto-thin.ttf);
+}
+
+@font-face
+{
+    font-family: Roboto-light;
+    src: url(fonts/Roboto-light.ttf);
+}
+
+.row{overflow-x: hidden}
+
+body
+{
+    margin-top: 65px;
+    background-color: #0B0E13;
+    overflow-x: hidden;
+}
+
+nav.navbar-fixed-top
+{
+    background-color: #1c2632;
+    height: 65px;
+}
+
+.navbar-nav > li > a
+{
+    padding-top: 23px;
+    padding-bottom: 22px;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #9ee6f8;
+    font-family: Roboto-light, sans-serif;
+    font-size: 1.3em;
+}
+
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus, .navbar-nav > li.active > a
+{
+    background-color: #19222d;
+    color: #6ea3b4;
+}
+
+#addTeam
+{
+    background-color: #0D354F;
+    font-family: Roboto-light, sans-serif;
+    font-size: 1.3em;
+    color: #cfe5f2;
+    border-style: solid;
+    border-width: thin;
+    border-color: #0a2a3e;
+    padding: 10px 20px 10px 20px;
+    border-radius: 75px;
+    margin-top: 20px;
+}
+
+.panel-heading:hover,#addTeam:hover{-webkit-filter:brightness(90%);}
+
+#title
+{
+    font-family: Roboto-light, sans-serif;
+    color: #2C6A8A;
+    font-size: 4em;
+    padding-top: 30px;
+}
+
+#titledetail
+{
+    padding-left: 30px;
+    font-family: Roboto-thin, sans-serif;
+    color: #2C6A8A;
+    font-size: 2em;
+}
+
+.list-group-item
+{
+    color: #cfe5f2;
+    background-color: #0D354F;
+    border-color: #0a2a3e;
+    font-size: 1.5em;
+    font-family: Roboto-light, sans-serif;
+}
+
+.panel, .panel-default{background-color: #0D354F; border-color: #0a2a3e}
+
+.panel-default > .panel-heading
+{
+    color: #cfe5f2;
+    background-color: #0D354F;
+    border-color: #0a2a3e;
+    font-family: Roboto-light, sans-serif;
+    font-size: 1.5em;
+}
+
+.panel-default > .panel-heading + .panel-collapse > .panel-body{border-top: none}
+
+.panel-body
+{
+    color: #cfe5f2;
+    background-color: #19435f;
+    font-family: Roboto-light, sans-serif;
+}
+
+div.form-group > label
+{
+    font-family: Roboto-light, sans-serif;
+}
+
+#accordion{padding-left: 40px; padding-right: 40px;}
