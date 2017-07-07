@@ -31,6 +31,9 @@
                 <li><a href="../teams">Teams</a></li>
                 <li><a href="#">Projects</a></li>
                 <li><a href="#">Schedule</a></li>
+                {% if user.is_superuser %}
+                <li><a href="../members">Members</a></li>
+                {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">{{ request.user.username }}</a></li>

@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect
 from TeamManagement.models import Team
 from django.contrib.auth.models import User, Group
 from django.http import HttpResponse, HttpResponseNotFound
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 
 
+@login_required
 def index(request):
     team = Team.objects.order_by('group__name')
     return render(request, 'Teams.html', {'teams': team})
@@ -27,3 +30,9 @@ def validateteamname(request):
         team.group = group
         team.save()
         return HttpResponse('Nice')
+
+
+@staff_member_required
+def deleteteam(request, groupid):
+    Group.objects.filter(id=groupid).delete()
+    return redirect('index')

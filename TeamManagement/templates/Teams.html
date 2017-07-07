@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     {% load static %}
+    {% load checkusergroup %}
     <meta charset="UTF-8">
     <link rel='icon' href='{% static 'images/CometLogoSquare.png' %}'>
     <!-- Imports JQuery -->
@@ -19,7 +20,7 @@
 
     <script src="{% static 'js/Teams.js' %}"></script>
 
-    <title>Mainpage</title>
+    <title>Teams</title>
 </head>
 <body>
     <nav class="navbar navbar-fixed-top">
@@ -33,6 +34,9 @@
                 <li class="active"><a href="../teams">Teams</a></li>
                 <li><a href="#">Projects</a></li>
                 <li><a href="#">Schedule</a></li>
+                {% if user.is_superuser %}
+                <li><a href="../members">Members</a></li>
+                {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">{{ request.user.username }}</a></li>
@@ -56,6 +60,10 @@
                                 <div class="panel-heading" data-toggle="collapse"
                                      data-parent="#accordion" data-target="#data{{ team.group.id }}">
                                     {{ team.group.name }}
+                                    <a style="text-decoration: none" href="delete/{{ team.group.id }}/">
+                                        <span class="glyphicon glyphicon-trash pull-right"
+                                          style="color:#cfe5f2; font-size: 15px; padding-top: 7px"></span>
+                                    </a>
                                 </div>
                                 <div id="data{{ team.group.id }}" class="panel-collapse collapse">
                                     <div class="panel-body">
@@ -106,15 +114,18 @@
                                 <div class="radio">
                                     <label><input type="radio" name="teamType" value="Development">Development</label>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" id="submitTeam">Add Team</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+                                <button type="button" class="webbutton" id="submitTeam">Add Team</button>
+                                <button type="button" class="webbutton" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
-
+            {% else %}
+                {% if request.user|has_group == True %}
+                    <p id="title">Teams</p>
+                {% else %}
+                    <p id="title">You are not part of a team!</p>
+                    <p id="titledetail">Contact the admin to add you to a team</p>
+                {% endif %}
             {% endif %}
         </div>
     </div>

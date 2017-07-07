@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel='icon' href='{% static 'images/CometLogoSquare.png' %}'>
+    <!-- Imports JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/members.css' %}">
+
+    <script src="{% static 'js/Teams.js' %}"></script>
+
+    <title>Members</title>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="../mainpage">
+                    <img style="height: 200%" src="{% static 'images/CometLogo.png' %}">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="../teams">Teams</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Schedule</a></li>
+                {% if user.is_superuser %}
+                <li class="active"><a href="../members">Members</a></li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">{{ request.user.username }}</a></li>
+                <li><a href="../accounts/logout/">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row">
+        <span class="col-md-1"></span>
+        <div class="col-md-10">
+            {% if user.is_superuser %}
+                {% if users.count == 0 %}
+                    <p id="title">There are no users!</p>
+                {% else %}
+                    <p id="title">Users</p>
+                    <div class="panel-group" id="accordion">
+                        {% for user in users %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-toggle="collapse"
+                                     data-parent="#accordion" data-target="#data{{ user.id }}">
+                                    {{ user.last_name }},
+                                    {{ user.first_name }}
+                                    <a style="text-decoration: none" href="../accounts/delete/{{ user.id }}/">
+                                        <span class="glyphicon glyphicon-trash pull-right"
+                                          style="color:#cfe5f2; font-size: 15px; padding-top: 7px"></span>
+                                    </a>
+                                </div>
+                                <div id="data{{ user.id }}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="container">
+                                            Stuff
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

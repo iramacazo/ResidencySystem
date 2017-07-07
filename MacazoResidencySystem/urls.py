@@ -27,6 +27,8 @@ urlpatterns = [
 
     url(r'^mainpage/', views.mainpage, name='mainpage'),
 
-    url(r'^teams/', include('TeamManagement.urls'), name='teams')
+    url(r'^teams/', include('TeamManagement.urls'), name='teams'),
+
+    url(r'^members/', views.members, name='members'),
 
 ]

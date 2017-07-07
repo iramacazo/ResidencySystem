@@ -11,4 +11,5 @@ urlpatterns = [
 
     url(r'^logout/', logout, {'next_page': settings.LOGIN_REDIRECT_URL}),
 
+    url(r'^delete/(?P<userid>\d+)/', views.deleteuser, name='deleteteam')
 ]

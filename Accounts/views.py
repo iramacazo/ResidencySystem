@@ -5,6 +5,7 @@ from django.contrib.auth import login, authenticate
 from Accounts.models import UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 # Create your views here.
 
@@ -59,3 +60,15 @@ def homepage(request):
         return redirect('mainpage')
     else:
         return render(request, 'HomePage.html')
+
+
+@staff_member_required
+def members(request):
+    list_of_users = User.objects.filter(is_staff=False).order_by('last_name')
+    return render(request, 'members.html', {'users': list_of_users})
+
+
+@staff_member_required
+def deleteuser(request, userid):
+    User.objects.filter(id=userid).delete()
+    return redirect('members')
